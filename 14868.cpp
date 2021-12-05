@@ -12,7 +12,6 @@ struct unit{
 
 
 
-
 int N, K;
 int map[2001][2001];
 
