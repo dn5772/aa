@@ -7,3 +7,8 @@ a.out
 
 #setting
 .vscode
+
+
+*.txt
+
+1.cpp

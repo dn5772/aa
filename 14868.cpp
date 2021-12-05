@@ -8,10 +8,10 @@ int parent[100001];
 int move_x[4] = {1, -1, 0, 0};
 int mone_y[4] = {0, 0, 1, -1};
 
-struct unit{
+typedef struct {
 	int x;
 	int y;
-};
+} unit;
 
 queue<unit> q, q2;
 
@@ -33,9 +33,13 @@ bool marge (int x, int y){
 	return true;
 }
 
+void bfs(){
 
+}
 
+void bfs2(){
 
+}
 
 
 int N, K;
@@ -43,16 +47,24 @@ int N, K;
 int main(){
 	cin >> N >> K;
 
-	int x, y;
+	int ans=0;
+
+	unit u;
 
 	for (int i=1; i<=K; i++){
-		cin >> x >> y;
-		map[x][y] = i;
+		cin >> u.x >> u.y;
+		map[u.x][u.y] = i;
 		parent[i] = i;
+		q.push(u);
 	}
 
-
-
-
-	return 0;
+	while (1){
+		bfs();
+		if (K==1){
+			cout << ans << endl;
+			return 0;
+		}
+		bfs2();
+		ans++;
+	}
 }
