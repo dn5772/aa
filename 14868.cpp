@@ -28,6 +28,8 @@ int N, K;
 
 
 int main(){
+	cin >> N << K;
+
 
 
 
