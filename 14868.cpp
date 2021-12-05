@@ -14,7 +14,11 @@ struct unit{
 queue<unit> q, q2;
 
 int find (int x){
-	if ()
+	if (parent[x] == x){
+		return x;
+	} else{
+		find(parent[x])
+	}
 }
 
 
