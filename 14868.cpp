@@ -33,28 +33,46 @@ bool marge (int x, int y){
 	return true;
 }
 
-void bfs(){ // 문명 합치기
+void bfs(){
 	unit cur_u, u;
 
 	while (!q.empty()){
 		cur_u = q.front();
+		q2.push(cur_u);
 		q.pop();
 
 		for (int i=0; i<4; i++){
 			u.x = cur_u.x + move_x[i];
 			u.y = cur_u.y + move_y[i];
 
-			
+			if ((0<u.x<=N) && (0<u.y<=N)){
+				if (marge(map[u.x][u.y], map[cur_u.x][cur_u.y])){
+					k--;
+				}
+			}
 		}
-
-		
 	}
-	
-
 }
 
-void bfs2(){ // 문명 전파하기
+void bfs2(){
+	unit cur_u, u;
 
+	while (!q.empty()){
+		cur_u = q2.front();
+		q2.pop()
+
+		for (int i=0; i<4; i++){
+			u.x = cur_u.x + move_x[i];
+			u.y = cur_u.y + move_y[i];
+
+			if ((0<u.x<=N) && (0<u.y<=N)){
+				if (map[u.x][u.y] == 0){
+					map[u.x][u.y] = map[cur_u.x][cur_u.y];
+                    q.push(u);
+				}
+			}
+		}
+	}
 }
 
 
