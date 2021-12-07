@@ -1,21 +1,22 @@
-#include <iostream>
+#include <stdio.h>
 #include <queue>
 
 using namespace std;
 
-priority_queue<int> pq;
+priority_queue<unsigned long> pq;
 
 int main(){
-	int N, a;
-	cin >> N;
+	int N;
+	unsigned long a;
+	scanf("%d", &N);
 
 	for (int i=0; i<N; i++){
-		cin >> a;
+		scanf("%ld", &a);
 
 		if (a==0){
-			if (pq.empty()){cout<<"0"<<endl;}
+			if (pq.empty()){printf("0\n");}
 			else {
-				cout<<pq.top()<<endl;
+				printf("%ld", pq.top());
 				pq.pop();
 				}
 		}
