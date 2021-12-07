@@ -4,9 +4,10 @@
 using namespace std;
 
 int map[2001][2001];
-int parent[100001];
+int parent[100002];
 int move_x[4] = {1, -1, 0, 0};
 int move_y[4] = {0, 0, 1, -1};
+int N, K;
 
 typedef struct {
 	int x;
@@ -18,8 +19,9 @@ queue<unit> q, q2;
 int find (int x){
 	if (parent[x] == x){
 		return x;
-	} else{
-		find(parent[x]);
+	}
+	else {
+		return parent[x] = find(parent[x]);
 	}
 }
 
@@ -45,9 +47,11 @@ void bfs(){
 			u.x = cur_u.x + move_x[i];
 			u.y = cur_u.y + move_y[i];
 
-			if ((0<u.x<=N) && (0<u.y<=N)){
-				if (marge(map[u.x][u.y], map[cur_u.x][cur_u.y])){
-					k--;
+			if ((0<u.x&&u.x<=N) && (0<u.y&&u.y<=N)){
+				if (map[u.x][u.y] > 0 && map[cur_u.x][cur_u.y] != map[u.x][u.y]){
+					if (marge(map[u.x][u.y], map[cur_u.x][cur_u.y])){
+						K--;
+					}
 				}
 			}
 		}
@@ -57,15 +61,15 @@ void bfs(){
 void bfs2(){
 	unit cur_u, u;
 
-	while (!q.empty()){
+	while (!q2.empty()){
 		cur_u = q2.front();
-		q2.pop()
+		q2.pop();
 
 		for (int i=0; i<4; i++){
 			u.x = cur_u.x + move_x[i];
 			u.y = cur_u.y + move_y[i];
 
-			if ((0<u.x<=N) && (0<u.y<=N)){
+			if ((0<u.x && u.x <=N) && (0<u.y&&u.y<=N)){
 				if (map[u.x][u.y] == 0){
 					map[u.x][u.y] = map[cur_u.x][cur_u.y];
                     q.push(u);
@@ -75,16 +79,10 @@ void bfs2(){
 	}
 }
 
-
-int N, K;
-
 int main(){
 	cin >> N >> K;
-
 	int ans=0;
-
 	unit u;
-
 	for (int i=1; i<=K; i++){
 		cin >> u.x >> u.y;
 		map[u.x][u.y] = i;
