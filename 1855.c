@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string>
+#include <string.h>
 
 int main(){
     int k;
@@ -7,6 +7,7 @@ int main(){
 	int cnt=k-1;
     char k0[200];
     scanf("%s", k0);
+  
 
     for (int i=0; i<k; i++){
 		for (int j=0; j<strlen(k0)/k; j++){
