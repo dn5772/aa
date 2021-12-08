@@ -3,20 +3,20 @@
 
 using namespace std;
 
-priority_queue<unsigned long> pq;
+priority_queue<int> pq;
 
 int main(){
 	int N;
-	unsigned long a;
+	int a;
 	scanf("%d", &N);
 
 	for (int i=0; i<N; i++){
-		scanf("%ld", &a);
+		scanf("%d", &a);
 
 		if (a==0){
 			if (pq.empty()){printf("0\n");}
 			else {
-				printf("%ld", pq.top());
+				printf("%d\n", pq.top());
 				pq.pop();
 				}
 		}
