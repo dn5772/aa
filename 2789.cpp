@@ -8,14 +8,13 @@ int main(void){
 
 	while (1){
 		char a = getchar();
+		bool b = false;
 		if (a == '\n'){
 			return 0;
 		}
 		for (int i=0; i<10; i++){
-			if (!(a == cam[i])){
-				putchar(a);
-			}
+			if (cam[i] == a) {b=true;}
 		}
+		if (!b){putchar(a);}
 	}
-
 }
