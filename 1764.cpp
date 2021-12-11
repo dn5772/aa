@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -6,45 +6,37 @@
 using namespace std;
 
 #define N 500000
-int n, m, k;
+int n, m;
 
 int main(){
-    int i, j, com, count=0;
+    ios_base :: sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-    scanf("%d %d\n", &n, &m);
-    if ((n-m)>0)
-        k=m;
-    else
-        k=n;
-    vector<string> d(n), b(m), a(k);
-    char *tmp;
+    int i, j;
+
+    cin >> n >> m;
+    
+    vector<string> d(n), ans;
+    string tmp;
 
     for (i=0; i<n; i++){
         cin >> d[i];
     }
+
+    sort(d.begin(), d.end());
     
     for (i=0; i<m; i++){
-        cin >> b[i];
+        cin >> tmp;
+        if (binary_search(d.begin(), d.end(), tmp)){ans.push_back(tmp);}
     }
 	
-	sort(d.begin(), d.end());
-    sort(b.begin(), b.end());
-
-    for (i=0; i<n; i++)
-        for (j=0; j<m; j++){
-            com = d[i].compare(b[j]);
-            if (com < 0){break;}
-
-            if (com == 0){
-                a[count++] = d[i];
-                break;
-            }
-        }
+    sort(ans.begin(), ans.end());
     
-    printf("%d\n", count);
+    cout << ans.size() << "\n";
 
-    for (i=0; i<count; i++)
-        cout << a[i] << endl;
+    for (i=0; i<ans.size(); i++)
+        cout << ans[i] << endl;
     
    return 0;
 }
