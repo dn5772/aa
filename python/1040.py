@@ -16,6 +16,6 @@ elif size == int(k):
     ans = n
 
 else: #size > k
-
+    ans = n
 
 print(ans)
